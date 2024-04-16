@@ -29,6 +29,7 @@ const Auth = require('./auth')
 
 router.post('/addProduct', Auth,(req, res, next) => {
   let nextProductId = 1
+  console.log(req.body.imageUrl)
   new Product({ ourId: '9' + nextProductId, name: req.body.title, size: 'large', imageUrl: req.body.imageUrl })
     .save()
     .then(result => {

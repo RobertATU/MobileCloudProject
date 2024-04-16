@@ -176,7 +176,7 @@ const LoginScreen = ({ navigation ,route}) => {
   const signIn = async () => {
     try {
       const response = await fetch(
-        'https://ac1e-79-140-211-73.ngrok-free.app/signin',
+        'https://fc2e-193-1-57-1.ngrok-free.app/signin',
         {
 
               method: "POST",
@@ -202,7 +202,7 @@ const LoginScreen = ({ navigation ,route}) => {
         const signUp = async () => {
           try {
             const response = await fetch(
-              'https://ac1e-79-140-211-73.ngrok-free.app/signup',
+              'https://fc2e-193-1-57-1.ngrok-free.app/signup',
               {
       
                     method: "POST",
@@ -423,7 +423,7 @@ const HomeScreen = ({ navigation }) => {
     scheduleNotificationHandlerInsert(text);
     await callnAPIpost();
     //function that gets result from DB
-    navigation.navigate("Results", {Result: Result});
+    navigation.navigate("Results", {Result: Result, image: pickedImage });
   };
 
   async function scheduleNotificationHandlerInsert(notificationBody) {
@@ -472,7 +472,7 @@ const HomeScreen = ({ navigation }) => {
           console.log("File upload completed. Download URL:", downloadURL);
 
           const res = await fetch(
-            `https://ac1e-79-140-211-73.ngrok-free.app/addProduct`,
+            `https://fc2e-193-1-57-1.ngrok-free.app/addProduct`,
             {
               method: "POST",
               headers: {
@@ -502,7 +502,7 @@ const HomeScreen = ({ navigation }) => {
   const signOut = async () => {
     try {
       const response = await fetch(
-        'https://ac1e-79-140-211-73.ngrok-free.app/signout',
+        'https://fc2e-193-1-57-1.ngrok-free.app/signout',
         {
 
               method: "GET",
@@ -558,7 +558,6 @@ const HomeScreen = ({ navigation }) => {
           ) : (
             <Image style={styles.image} source={{ uri: pickedImage }} />
           )}
-          
         </View>
         <Button   buttonStyle={{ backgroundColor: 'red',
         borderWidth: 2,
@@ -570,9 +569,54 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const ResultsScreen = ({ navigation ,route}) => {
-  console.log(route.params)
+  const styles = StyleSheet.create({
+    imagePicker: {
+      color:'blue',
+      alignItems: "center",
+      width: "50%",
+      height: "50%",
+    },
+    imagePreview: {
+      width: "100%",
+      height: 540,
+      marginBottom: 5,
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: "#ccc",
+      borderWidth: 1,
+    },
+    image: {
+      width: "100%",
+      height: "100%",
+    },
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 32,
+      borderRadius: 40,
+      elevation: 3,
+      backgroundColor: 'black',
+    },
+    input:{
+      height:30,
+      width: 200,
+      borderColor:'grey',
+      borderWidth: 1,
+      margin:10,
+      paddingHorizontal: 10,
+      borderRadius: 5,
+    },
+  });
+  console.log(route.params.image)
   return (
+    
     <View style={styles.container}>
+<View style={styles.imagePreview}>
+            <Image style={styles.image} source={{ uri: tfuytfrroute.params.image }} />
+            </View>
+      
+
    <Text style={styles.resultText}>{route.params.Result}</Text>
   </View>
   )
